@@ -1,0 +1,52 @@
+### product create/update
+POST {{host}}/api/ozon/v1/product/edit
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "productId": "04f37cf5-3ced-11ee-8c20-bc6a09a24683",
+  "ozon": {
+    "catalogId": "018c3a0c-2acb-73cd-9a3e-bf6bbcee9ee0",
+    "vendorCode": "01HRO00001",
+    "union": [
+    ],
+    "attributes": [
+      {
+        "attributeId": "018c10dd-10d6-70d6-bfac-1b5c4f48d747",
+        "value": [
+          "Центелла",
+          "Центелла2",
+          "Центелла3"
+        ]
+      }
+    ]
+  }
+}
+
+### Get one product
+POST {{host}}/api/v2/product
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "productId": "A7350E19-0E80-11EE-890A-AC1F6B72B9B1",
+  "source": "ozon"
+}
+
+### Get all products
+POST {{host}}/api/v2/products
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "source": "ozon"
+}
+
+### Push product to 1c
+POST {{host}}/api/v2/product/pushToOneC
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "productId": "ff8f12f8-35a8-11ee-8c1e-81e0f3caa235"
+}

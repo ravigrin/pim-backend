@@ -1,0 +1,30 @@
+monolog:
+  handlers:
+    #    bot_php:
+    #      type: service
+    #      id: telegram_handler_php_prod
+    #      channels: php
+    bot_app:
+      type: service
+      id: telegram_handler_app_prod
+      channels: app
+    main:
+      type: stream
+      path: "%kernel.logs_dir%/%kernel.environment%.main.log"
+      level: error
+      channels: [ '!app', '!security', '!console', '!messenger', '!request', '!php' ]
+    php:
+      type: stream
+      path: "%kernel.logs_dir%/%kernel.environment%.php.log"
+      level: error
+      channels: php
+    messenger:
+      type: stream
+      path: "%kernel.logs_dir%/%kernel.environment%.messenger.log"
+      level: error
+      channels: messenger
+    app:
+      type: stream
+      path: "%kernel.logs_dir%/%kernel.environment%.app.log"
+      level: error
+      channels: app

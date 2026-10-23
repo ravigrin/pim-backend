@@ -1,0 +1,21 @@
+### Get all attributes by catalog
+POST {{host}}/api/v2/attributes
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "source": "pim",
+  "catalogId": null
+}
+
+### Get attributes history
+POST {{host}}/api/v2/attributes/history
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "source": "pim",
+  "productId": "207e4173-27a1-11ee-8c1e-81e0f3caa235",
+  "page": 1,
+  "perPage": 50
+}

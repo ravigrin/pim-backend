@@ -1,0 +1,21 @@
+### Get all attributes by catalog
+POST {{host}}/api/v2/attributes
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "source": "ozon",
+  "catalogId": "018E0EFF-41F6-72D4-BCE3-5702A8934E3D"
+}
+
+### Get attributes history
+POST {{host}}/api/v2/attributes/history
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "source": "ozon",
+  "productId": "207e4173-27a1-11ee-8c1e-81e0f3caa235",
+  "page": 1,
+  "perPage": 50
+}

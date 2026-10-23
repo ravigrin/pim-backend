@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+  php:
+    container_name: pim-prod-php
+    build:
+      context: "./"
+      target: php_prod
+    depends_on:
+      - redis
+    ports:
+      - "8055:80"
+      - "9055:9000"
+    networks:
+      pim-prod:
+
+  redis:
+    container_name: pim-prod-redis
+    image: redis:7-alpine
+    networks:
+      pim-prod:
+
+networks:
+  pim-prod:

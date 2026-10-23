@@ -1,0 +1,48 @@
+shared-v2:
+  resource:
+    path: ../src/Http/V2
+    namespace: App\Http\V2
+  type: attribute
+  prefix: /api/v2
+
+pim-v1:
+  resource:
+    path: ../module/pim/src/EndPoint/Http/V1
+    namespace: Pim\EndPoint\Http\V1
+  type: attribute
+  prefix: /api/pim/v1
+
+ozon-v1:
+  resource:
+    path: ../module/ozon/src/EndPoint/Http/V1
+    namespace: Ozon\EndPoint\Http\V1
+  type: attribute
+  prefix: /api/ozon/v1
+
+wb-v1:
+  resource:
+    path: ../module/wildberries/src/EndPoint/Http/V1
+    namespace: Wildberries\EndPoint\Http\V1
+  type: attribute
+  prefix: /api/wb/v1
+
+ad-analytics-v1:
+  resource:
+    path: ../module/ad-analytics/src/EndPoint/Api/V1
+    namespace: AdAnalytics\EndPoint\Api\V1
+  type: attribute
+  prefix: /api/v1/ad-analytics
+
+fulfillment-v1:
+  resource:
+    path: ../module/fulfillment/src/EndPoint/Api/V1
+    namespace: Fulfillment\EndPoint\Api\V1
+  type: attribute
+  prefix: /api/v1/fulfillment
+
+files-v1:
+  resource:
+    path: ../module/files/src/EndPoint/Api/V1
+    namespace: Files\EndPoint\Api\V1
+  type: attribute
+  prefix: /api/v1/files

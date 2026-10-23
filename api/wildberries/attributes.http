@@ -1,0 +1,30 @@
+### Get all attributes without catalog
+POST {{host}}/api/v2/attributes
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "source": "wildberries"
+}
+
+### Get all attributes by catalog
+POST {{host}}/api/v2/attributes
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "source": "wildberries",
+  "catalogId": "018E0871-CFA3-7356-B131-116C022CA87E"
+}
+
+### Get attributes history
+POST {{host}}/api/v2/attributes/history
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "source": "wildberries",
+  "productId": "207e4173-27a1-11ee-8c1e-81e0f3caa235",
+  "page": 1,
+  "perPage": 50
+}

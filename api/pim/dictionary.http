@@ -1,0 +1,10 @@
+### Get all attributes by catalog
+POST {{host}}/api/v2/dictionary
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "source": "pim",
+  "catalogId": null,
+  "attributeId": "018c588c-b22d-73ed-8329-e73552c3bed3"
+}

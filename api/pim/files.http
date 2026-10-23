@@ -1,0 +1,3 @@
+### Get nomenclatures template
+GET {{host}}/api/v2/files
+Content-Type: application/json

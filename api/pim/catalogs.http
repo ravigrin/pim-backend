@@ -1,0 +1,8 @@
+### Get catalogs by source
+POST {{host}}/api/v2/catalogs
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "source": "pim"
+}

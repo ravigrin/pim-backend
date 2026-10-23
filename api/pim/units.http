@@ -1,0 +1,24 @@
+### Add unit
+POST {{host}}/api/v2/unit/edit
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "unitId": null,
+  "name": "unit 2",
+  "code": "02"
+}
+
+### Get one unit
+POST {{host}}/api/v2/unit
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "unitId": "018befa6-db73-703f-8138-4cd15a4e781c"
+}
+
+### Get all units
+POST {{host}}/api/v2/units
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}

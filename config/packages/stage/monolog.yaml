@@ -1,0 +1,24 @@
+monolog:
+  handlers:
+    main:
+      type: stream
+      path: "%kernel.logs_dir%/%kernel.environment%.main.log"
+      level: error
+      channels: [ '!app', '!php' ]
+    php:
+      type: stream
+      path: "%kernel.logs_dir%/%kernel.environment%.php.log"
+      level: error
+      channels: [ php ]
+    #    bot_main:
+    #      type: service
+    #      id: telegram_handler_main_stage
+    #      channels: [ '!app', '!php', '!console', '!request' ]
+    #    bot_php:
+    #      type: service
+    #      id: telegram_handler_php_stage
+    #      channels: php
+    bot_app:
+      type: service
+      id: telegram_handler_app_stage
+      channels: app

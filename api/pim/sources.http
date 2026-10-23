@@ -1,0 +1,4 @@
+### Get all sources
+POST {{host}}/api/v2/sources
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}

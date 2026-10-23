@@ -1,0 +1,43 @@
+### product create/update
+POST {{host}}/api/wb/v1/product/edit
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "productId": "E0420CD4-221E-11EE-8C1E-81E0F3CAA235",
+  "wildberries": {
+    "catalogId": "018C1AAC-690B-70A3-AB9F-003417E2F813",
+    "union": [
+      "207E4315-27A1-11EE-8C1E-81E0F3CAA235",
+      "207E42A3-27A1-11EE-8C1E-81E0F3CAA235"
+    ],
+    "attributes": [
+      {
+        "attributeId": "018C1AAF-BCBB-717B-80D9-2175E60F9BF0",
+        "value": [
+          "Центелла",
+          "Ниацинамид"
+        ]
+      }
+    ]
+  }
+}
+
+### Get one product
+POST {{host}}/api/v2/product
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "productId": "C65A812A-68CB-11EE-8C25-D5BA73E6FD57",
+  "source": "wildberries"
+}
+
+### Get all products
+POST {{host}}/api/v2/products
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "source": "wildberries"
+}

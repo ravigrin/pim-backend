@@ -1,0 +1,21 @@
+monolog:
+  handlers:
+    main:
+      type: stream
+      path: "%kernel.logs_dir%/%kernel.environment%.main.log"
+      level: debug
+      channels: [ '!app', '!security', '!messenger', '!request', '!php' ]
+    php:
+      type: stream
+      path: "%kernel.logs_dir%/%kernel.environment%.php.log"
+      level: CRITICAL
+      channels: [ php ]
+    messenger:
+      type: stream
+      path: "%kernel.logs_dir%/%kernel.environment%.messenger.log"
+      level: CRITICAL
+      channels: [ messenger ]
+    app:
+      type: stream
+      path: "%kernel.logs_dir%/%kernel.environment%.app.log"
+      channels: [ app ]

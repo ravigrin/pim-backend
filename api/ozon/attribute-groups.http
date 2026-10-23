@@ -1,0 +1,33 @@
+### Get all attribute groups list
+POST {{host}}/api/v2/attribute-group
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "source": "ozon",
+  "catalogId": "018D64E4-7B74-7005-9664-03CAC0624102"
+}
+
+##### ответ
+//{
+//  "tabId": "",
+//  "name": "Информация о товаре",
+//  "alias": "info",
+//  "order": 1
+//  "groups": [
+//    {
+//      "groupId": "",
+//      "name": "Все",
+//      "alias": "all",
+//      "order": 1
+//      "attributes": [
+//        "261",
+//        "262",
+//        "266",
+//        "281",
+//        "282",
+//      ]
+//    },
+//
+//  ],
+//}

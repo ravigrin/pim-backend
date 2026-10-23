@@ -1,0 +1,15 @@
+### Create nomenclatures
+POST {{host}}/api/pim/v1/nomenclatures
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+[
+  {
+    "name": "Омолаживающий крем для лица и век SYN - AKE Peptide, 50 мл",
+    "brand": "DEMO BRAND A",
+    "productLine": null,
+    "unit": 1,
+    "set": false,
+    "status": "В работе"
+  }
+]

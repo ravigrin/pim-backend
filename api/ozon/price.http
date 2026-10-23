@@ -1,0 +1,38 @@
+### Price update
+POST {{host}}/api/v2/price/edit
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "source": "ozon",
+  "prices":  [
+    {
+      "productId": "E0420CD4-221E-11EE-8C1E-81E0F3CAA235",
+      "price": 10000,
+      "discount": 12,
+      "costPrice": 5000,
+      "totalPrice": 8000
+    }
+  ]
+
+}
+
+### Get all prices
+POST {{host}}/api/v2/prices
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "source": "ozon"
+}
+
+### Calculate net-cost price for product
+POST {{host}}/api/v2/price/net-cost
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "source": "ozon",
+  "productId": "E0420CD4-221E-11EE-8C1E-81E0F3CAA235",
+  "finalPrice": 103.56
+}

@@ -1,0 +1,24 @@
+### upload files
+POST {{host}}/api/v1/files/upload
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "productId": "018c8248-58a7-7107-a4f5-423fea1b5e9e",
+  "images": [
+    {
+      "image": "",
+      "type": "png",
+      "size": "385×156"
+    },
+    {
+      "image": "",
+      "type": "png",
+      "size": "385×156"
+    }
+  ]
+}
+
+### get file
+GET {{host}}/api/v1/files/get/018df47f-a9c4-70e1-b273-22af33b57080
+X-AUTH-TOKEN: {{token}}

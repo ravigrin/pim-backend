@@ -1,0 +1,54 @@
+parameters:
+  paths:
+    - ./src
+  layers:
+    - {
+      name: Domain,
+      collectors: [ { type: className, regex: ^App\\Domain\\ } ]
+    }
+    - {
+      name: Application,
+      collectors: [ { type: className, regex: ^App\\Application\\ } ]
+    }
+    - {
+      name: Presenter,
+      collectors: [ { type: className, regex: ^App\\Presenter\\ } ]
+    }
+    - {
+      name: Infrastructure,
+      collectors: [ { type: className, regex: ^App\\Infrastructure\\ } ]
+    }
+    - {
+      name: UserInterface,
+      collectors: [ { type: className, regex: ^App\\UserInterface\\ } ]
+    }
+    - {
+      name: Doctrine,
+      collectors: [ { type: className, regex: ^Doctrine\\ } ]
+    }
+    - {
+      name: Symfony,
+      collectors: [ { type: className, regex: ^Symfony\\ } ]
+    }
+    - {
+      name: Ramsey,
+      collectors: [ { type: className, regex: ^Ramsey\\ } ]
+    }
+    - {
+      name: Google,
+      collectors: [ { type: className, regex: ^Google\\ } ]
+    }
+    - {
+      name: Psr,
+      collectors: [ { type: className, regex: ^Psr\\ } ]
+    }
+    - {
+      name: GuzzleHttp,
+      collectors: [ { type: className, regex: ^GuzzleHttp\\ } ]
+    }
+  ruleset:
+    Domain: [ Doctrine, Symfony ]
+    Application: [ Domain ]
+    Presenter: [ Domain, Application ]
+    Infrastructure: [ Application, Domain, Doctrine, Symfony, Ramsey, Google, Psr, GuzzleHttp ]
+    UserInterface: [ Domain, Application, Presenter, Symfony, Ramsey ]

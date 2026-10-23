@@ -1,0 +1,161 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  telegram_handler_main_prod:
+    class: Monolog\Handler\TelegramBotHandler
+    arguments:
+      - '%env(TG_BOT_TOKEN)%'
+      - '%env(TG_CHAT_MAIN_PROD)%'
+      - 'error'
+  telegram_handler_php_prod:
+    class: Monolog\Handler\TelegramBotHandler
+    arguments:
+      - '%env(TG_BOT_TOKEN)%'
+      - '%env(TG_CHAT_PHP_PROD)%'
+      - 'error'
+  telegram_handler_app_prod:
+    class: Monolog\Handler\TelegramBotHandler
+    arguments:
+      - '%env(TG_BOT_TOKEN)%'
+      - '%env(TG_CHAT_APP_PROD)%'
+  telegram_handler_main_stage:
+    class: Monolog\Handler\TelegramBotHandler
+    arguments:
+      - '%env(TG_BOT_TOKEN)%'
+      - '%env(TG_CHAT_MAIN_STAGE)%'
+      - 'warning'
+  telegram_handler_php_stage:
+    class: Monolog\Handler\TelegramBotHandler
+    arguments:
+      - '%env(TG_BOT_TOKEN)%'
+      - '%env(TG_CHAT_PHP_STAGE)%'
+      - 'warning'
+  telegram_handler_app_stage:
+    class: Monolog\Handler\TelegramBotHandler
+    arguments:
+      - '%env(TG_BOT_TOKEN)%'
+      - '%env(TG_CHAT_APP_STAGE)%'
+
+  Shared\:
+    resource: '../module/shared/src/'
+
+  Pim\:
+    resource: '../module/pim/src/'
+    exclude:
+      - '../module/pim/src/Domain/Entity'
+
+  Ozon\:
+    resource: '../module/ozon/src/'
+    exclude:
+      - '../module/ozon/src/Domain/Entity'
+
+  Wildberries\:
+    resource: '../module/wildberries/src/'
+    exclude:
+      - '../module/wildberries/src/Domain/Entity'
+
+  AdAnalytics\:
+    resource: '../module/ad-analytics/src/'
+
+  Fulfillment\:
+    resource: '../module/fulfillment/src/'
+
+  # --- Адаптеры внешних сервисов (подключение через конфигурацию) ---
+  # Новый провайдер аналитики = новый сервис + register-call в реестр.
+  ad_analytics.provider_demo:
+    class: AdAnalytics\Infrastructure\Http\GenericRestProvider
+    arguments:
+      $name: 'demo'
+      $baseUrl: '%env(AD_ANALYTICS_BASE_URL)%'
+      $token: '%env(AD_ANALYTICS_TOKEN)%'
+
+  fulfillment.provider_demo:
+    class: Fulfillment\Infrastructure\Http\GenericRestProvider
+    arguments:
+      $name: 'demo'
+      $baseUrl: '%env(FULFILLMENT_BASE_URL)%'
+      $token: '%env(FULFILLMENT_TOKEN)%'
+
+#  OneC\:
+#    resource: '../module/one-c/src/'
+
+  Files\:
+    resource: '../module/files/src/'
+
+  App\:
+    resource: '../src/'
+    exclude:
+      - '../src/Kernel.php'
+
+  Shared\Infrastructure\EventBus\EventBus:
+    arguments:
+      - '@event.bus'
+
+  # Исключения из Application/Domain мапятся на HTTP-статусы в этом слушателе;
+  # флаг debug пробрасывается явно, т.к. scalar-зависимости не автоувайрятся.
+  App\EventListener\ExceptionListener:
+    arguments:
+      $debug: '%kernel.debug%'
+
+  Pim\Infrastructure\Ldap\AuthorizationRepository:
+    arguments:
+      $url: '%env(default::LDAP_URL)%'
+      $port: '%env(default::int:LDAP_PORT)%'
+      $domain: '%env(default::LDAP_DOMAIN)%'
+
+  _instanceof:
+    Shared\Domain\Command\CommandHandlerInterface:
+      tags:
+        - { name: messenger.message_handler, bus: command.bus }
+
+    Shared\Domain\Query\QueryHandlerInterface:
+      tags:
+        - { name: messenger.message_handler, bus: query.bus }
+
+    Shared\Domain\Event\EventHandlerInterface:
+      tags:
+        - { name: messenger.message_handler, bus: event.bus }
+
+  Psr\Http\Client\ClientInterface:
+    class: GuzzleHttp\Client
+
+aws:
+  version: latest
+  region: '%env(AWS_REGION)%'
+  endpoint: '%env(AWS_ENDPOINT)%'
+  credentials:
+    key: '%env(AWS_ACCESS_KEY_ID)%'
+    secret: '%env(AWS_SECRET_ACCESS_KEY)%'
+
+parameters:
+  wildberries:
+    catalogs: {
+      '49': 'Красота'
+    }
+    union.max: 30
+    color.max: 5
+
+    # count of tags and skus - not documented value - may be not relevant
+    tag.max: 5
+    sku.max: 3
+
+    image: {
+      max: 30,
+      allow: [ 'png', 'jpg' ]
+    }
+    video: {
+      max: 1,
+      allow: [ 'mov', 'mp4' ]
+    }
+
+    tables: {
+      'catalog': 'wb_catalog',
+      'attribute': 'wb_attribute',
+      'suggest': 'wb_suggest',
+      'product': 'wb_product',
+      'product-attribute': 'wb_product_attribute',
+      'price': 'wb_price',
+      'attribute-map': 'wb_attribute_map'
+    }

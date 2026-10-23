@@ -1,0 +1,24 @@
+### brand create/update
+POST {{host}}/api/v2/brand/edit
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "brandId": null,
+  "name": "Super Name 2",
+  "code": "SN2"
+}
+
+### Get one brand
+POST {{host}}/api/v2/brand
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "brandId": "c39a86a5-27a0-11ee-8c1e-81e0f3caa235"
+}
+
+### Get all brands
+POST {{host}}/api/v2/brands
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}

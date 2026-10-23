@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<psalm
+        errorLevel="1"
+        resolveFromConfigFile="true"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="https://getpsalm.org/schema/config"
+        xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+        findUnusedBaselineEntry="true"
+        findUnusedCode="false"
+>
+    <projectFiles>
+        <directory name="src"/>
+        <directory name="module/files/src"/>
+        <directory name="module/one-c/src"/>
+        <directory name="module/ozon/src"/>
+        <directory name="module/pim/src"/>
+        <directory name="module/shared/src"/>
+        <directory name="module/wildberries/src"/>
+        <ignoreFiles>
+            <directory name="vendor"/>
+        </ignoreFiles>
+        <ignoreFiles>
+            <directory name="var"/>
+        </ignoreFiles>
+    </projectFiles>
+    <plugins>
+        <pluginClass class="Psalm\SymfonyPsalmPlugin\Plugin"/>
+    </plugins>
+</psalm>

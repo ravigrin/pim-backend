@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+  php:
+    container_name: pim-stage-php
+    build:
+      context: "./"
+      target: php_stage
+    depends_on:
+      - redis
+    ports:
+      - "8055:80"
+      - "9055:9000"
+    networks:
+      pim-stage:
+
+  redis:
+    container_name: pim-stage-redis
+    image: redis:7-alpine
+    networks:
+      pim-stage:
+
+networks:
+  pim-stage:

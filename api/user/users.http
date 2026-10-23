@@ -1,0 +1,42 @@
+### auth user
+POST {{host}}/api/v2/login
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "8n7EUW(0l>^n5;gG"
+}
+
+### Update user
+POST {{host}}/api/v2/user/edit
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "userId": "018e2a32-dbe1-70d5-b024-142c7e3655e8",
+  "roles": [
+    "ROLE_ADMIN"
+  ],
+  "units": [],
+  "brands": [],
+  "productLines": [],
+  "sources": [
+    "pim",
+    "ozon",
+    "wildberries"
+  ]
+}
+
+### Get one user
+POST {{host}}/api/v2/user
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "userId": "018d5faa-927e-71e3-ae2f-d16bbe396a6e"
+}
+
+### Get all user
+POST {{host}}/api/v2/users
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}

@@ -1,0 +1,20 @@
+### productLine create/update
+POST {{host}}/api/v2/productLine/edit
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "brandId": "018bdcfa-0044-72f3-9b57-5952ca2e5a08",
+  "productLineId": null,
+  "name": "Крема 21",
+  "code": "002"
+}
+
+### Get productLines
+POST {{host}}/api/v2/productLines
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "brandId": "018bdcfa-0044-72f3-9b57-5952ca2e5a08"
+}

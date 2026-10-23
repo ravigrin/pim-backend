@@ -1,0 +1,38 @@
+### Price update
+POST {{host}}/api/v2/price/edit
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "source": "wildberries",
+  "prices":  [
+    {
+      "productId": "9B0FD0BC-0E87-11EE-890A-AC1F6B72B9B1",
+      "price": 1000,
+      "discount": 50,
+      "costPrice": 123,
+      "totalPrice": 500
+    }
+  ]
+
+}
+
+### Get all prices
+POST {{host}}/api/v2/prices
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "source": "wildberries"
+}
+
+### Calculate net-cost price for product
+POST {{host}}/api/v2/price/net-cost
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "source": "wildberries",
+  "productId": "9B0FD0BC-0E87-11EE-890A-AC1F6B72B9B1",
+  "finalPrice": 1000
+}

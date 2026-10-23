@@ -1,0 +1,10 @@
+### Get all attributes by catalog
+POST {{host}}/api/v2/dictionary
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "source": "ozon",
+  "catalogId": "018c3823-8a37-7324-8471-f37a526a8da6",
+  "attributeId": "018c3823-b587-737c-a321-0e65c61b71be"
+}

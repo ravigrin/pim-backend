@@ -1,0 +1,78 @@
+doctrine:
+  dbal:
+    connections:
+      pim:
+        # configure these for your database server
+        driver: 'pdo_sqlsrv'
+        charset: utf8mb4
+        host: '%env(DATABASE_HOST)%'
+        port: '%env(DATABASE_PORT)%'
+        user: '%env(DATABASE_USER)%'
+        password: '%env(DATABASE_PWD)%'
+        dbname: '%env(DATABASE_NAME)%'
+        options:
+          TrustServerCertificate: true
+      dwh:
+        # configure these for your database server
+        driver: 'pdo_sqlsrv'
+        charset: utf8mb4
+        host: '%env(DWH_DATABASE_HOST)%'
+        port: '%env(DWH_DATABASE_PORT)%'
+        user: '%env(DWH_DATABASE_USER)%'
+        password: '%env(DWH_DATABASE_PWD)%'
+        dbname: '%env(DWH_DATABASE_NAME)%'
+        options:
+          TrustServerCertificate: true
+    default_connection: pim
+    types:
+      uuid:
+        class: Shared\Infrastructure\Doctrine\Type\UuidType
+        commented: false
+
+  orm:
+    auto_generate_proxy_classes: true
+    naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+    auto_mapping: true
+    mappings:
+      Pim:
+        is_bundle: false
+        dir: '%kernel.project_dir%/module/pim/src/Domain/Entity'
+        prefix: 'Pim\Domain\Entity'
+        alias: Pim
+      Ozon:
+        is_bundle: false
+        dir: '%kernel.project_dir%/module/ozon/src/Domain/Entity'
+        prefix: 'Ozon\Domain\Entity'
+        alias: Ozon
+      Wildberries:
+        is_bundle: false
+        dir: '%kernel.project_dir%/module/wildberries/src/Domain/Entity'
+        prefix: 'Wildberries\Domain\Entity'
+        alias: Wildberries
+      Files:
+        is_bundle: false
+        dir: '%kernel.project_dir%/module/files/src/Domain/Entity'
+        prefix: 'Files\Domain\Entity'
+        alias: Files
+
+when@stage:
+  doctrine:
+    orm:
+      auto_generate_proxy_classes: false
+      metadata_cache_driver:
+        id: cache.adapter.redis
+      query_cache_driver:
+        id: cache.adapter.redis
+      result_cache_driver:
+        id: cache.adapter.redis
+
+when@prod:
+  doctrine:
+    orm:
+      auto_generate_proxy_classes: false
+      metadata_cache_driver:
+        id: cache.adapter.redis
+      query_cache_driver:
+        id: cache.adapter.redis
+      result_cache_driver:
+        id: cache.adapter.redis

@@ -1,0 +1,10 @@
+### Get all attributes by catalog
+POST {{host}}/api/v2/dictionary
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "source": "wildberries",
+  "catalogId": null,
+  "attributeId": "018CA117-F4E3-709E-A6B9-D130D1A17C7C"
+}

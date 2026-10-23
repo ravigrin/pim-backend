@@ -1,0 +1,72 @@
+### product create/update
+POST {{host}}/api/pim/v1/product/edit
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "productId": null,
+  "pim": {
+    "unitId": "018c5782-e31a-73e3-abbc-19d888763137",
+    "brandId": "a1e6d36b-0e87-11ee-890a-ac1f6b72b9b1",
+    "productLineId": null,
+    "catalogId": "018c39f5-c3a7-7186-95a9-cc7b0716d10c",
+    "union": [
+      "ff8f1357-35a8-11ee-8c1e-81e0f3caa235",
+      "ff8f1344-35a8-11ee-8c1e-81e0f3caa235",
+      "ff8f1331-35a8-11ee-8c1e-81e0f3caa235"
+    ],
+    "isKit": true,
+    "attributes": [
+      {
+        "attributeId": "018c39f5-c4ca-7026-89f1-fdcc272ac192",
+        "value": "Маркетплейс"
+      }
+    ]
+  }
+}
+
+### Get one product
+POST {{host}}/api/v2/product
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "productId": "018e5b54-3986-704a-afaf-7af235c1cf65",
+  "source": "pim"
+}
+
+### Get all products
+POST {{host}}/api/v2/products
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+{
+  "source": "pim"
+}
+
+### Nomenclatures batch create/update
+POST {{host}}/api/v2/nomenclatures
+Content-Type: application/json
+X-AUTH-TOKEN: {{token}}
+
+[
+  {
+    "name": "Название товара номер три",
+    "unit": 1,
+    "brand": "Demo Brand A",
+    "productLine": "DEMO BRAND A",
+    "set": true,
+    "status": "Черновик",
+    "SKU": ""
+  },
+  {
+    "name": "Название товара номер четыре",
+    "unit": 2,
+    "brand": "Demo Brand D",
+    "productLine": null,
+    "set": false,
+    "status": "В работе",
+    "SKU": "U_02ECH0000027"
+  }
+]
+
